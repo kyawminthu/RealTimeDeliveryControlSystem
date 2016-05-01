@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="delivery_man" type="com.rtdcs.dao.DeliveryMan" />
+	
+	<!-- Perform Insert Operation -->
+	<insert id="insertDeliveryMan" parameterClass="delivery_man">
+		INSERT INTO
+			DELIVERY_MAN
+				( ID
+				, PASSWORD
+				, NAME
+				, CREATE_DATE
+				, UPDATE_DATE )
+			VALUES
+				( #id#
+				, #password#
+				, #name#
+				, NOW()
+				, NOW() )
+	</insert>
+	<update id="updateDeliveryMan" parameterClass="delivery_man">
+		UPDATE DELIVERY_MAN SET
+				<isNotEmpty property="id" >
+				ID = #id# ,
+				</isNotEmpty>
+				<isNotEmpty property="password" >
+				PASSWORD = #password# ,
+				</isNotEmpty>
+				<isNotEmpty property="name" >
+				NAME = #name# ,
+				</isNotEmpty>
+				UPDATE_DATE = NOW()
+		WHERE
+				ID = #id#
+	</update>
+
+	<!-- Perform Read Operation -->
+	<select id="getByID" parameterClass="String" resultClass="delivery_man">
+		SELECT 
+			ID				id
+			, PASSWORD		password
+			, NAME			name
+			, CREATE_DATE	createDate
+			, UPDATE_DATE	updateDate
+		FROM 
+			DELIVERY_MAN
+		WHERE
+			ID = #id#
+	</select>
+	
+	<select id="getAll" resultClass="delivery_man">
+		SELECT 
+			ID				id
+			, PASSWORD		password
+			, NAME			name
+			, CREATE_DATE	createDate
+			, UPDATE_DATE	updateDate
+		FROM 
+			DELIVERY_MAN
+	</select>
+</sqlMap>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="pushed_noti" type="com.rtdcs.dao.PushedNoti" />
+	
+	<!-- Perform Insert Operation -->
+	<insert id="insertNoti" parameterClass="pushed_noti">
+		INSERT INTO
+			ITEM_ASSIGN
+				( ID
+				, ITEM_ASSIGN_ID
+				, DELIVERY_MAN_ID
+				, TEXT
+				, CREATE_DATE
+				, UPDATE_DATE )
+			VALUES
+				( #id#
+				, #itemAssignId#
+				, #deliveryManId#
+				, #text#
+				, NOW()
+				, NOW() )
+	</insert>
+	<update id="updateNoti" parameterClass="pushed_noti">
+		UPDATE ITEM_ASSIGN SET
+				<isNotEmpty property="id" >
+				ID = #id# ,
+				</isNotEmpty>
+				<isNotEmpty property="itemAssignId" >
+				ITEM_ASSIGN_ID = #itemAssignId# ,
+				</isNotEmpty>
+				<isNotEmpty property="deliveryManId" >
+				DELIVERY_MAN_ID = #deliveryManId# ,
+				</isNotEmpty>
+				<isNotEmpty property="text" >
+				TEXT = #text# ,
+				</isNotEmpty>
+				UPDATE_DATE = NOW()
+		WHERE
+				ID = #id#
+	</update>
+
+	<!-- Perform Read Operation -->
+	<select id="getByID" parameterClass="int" resultClass="pushed_noti">
+		SELECT 
+			ID					id
+			, ITEM_ASSIGN_ID	itemAssignId
+			, DELIVERY_MAN_ID	deliveryManId
+			, TEXT				text
+			, CREATE_DATE		createDate
+			, UPDATE_DATE		updateDate
+		FROM 
+			ITEM_ASSIGN
+		WHERE
+			ID = #id#
+	</select>
+	
+	<select id="getByDeliveryMan" parameterClass="String" resultClass="pushed_noti">
+		SELECT 
+			ID					id
+			, ITEM_ASSIGN_ID	itemAssignId
+			, DELIVERY_MAN_ID	deliveryManId
+			, TEXT				text
+			, CREATE_DATE		createDate
+			, UPDATE_DATE		updateDate
+		FROM 
+			ITEM_ASSIGN
+		WHERE
+			DELIVERY_MAN_ID = #deliveryManId#
+	</select>
+	
+	<select id="getNewNotiByDeliveryMan" parameterClass="pushed_noti" resultClass="pushed_noti">
+		<![CDATA[
+			SELECT 
+				ID					id
+				, ITEM_ASSIGN_ID	itemAssignId
+				, DELIVERY_MAN_ID	deliveryManId
+				, TEXT				text
+				, CREATE_DATE		createDate
+				, UPDATE_DATE		updateDate
+			FROM 
+				ITEM_ASSIGN
+			WHERE
+				DELIVERY_MAN_ID = #deliveryManId#
+				AND
+				
+				CREATE_DATE > #createDate#
+		]]>
+	</select>
+	
+	<select id="getByAssignItem" parameterClass="int" resultClass="pushed_noti">
+		SELECT 
+			ID					id
+			, ITEM_ASSIGN_ID	itemAssignId
+			, DELIVERY_MAN_ID	deliveryManId
+			, TEXT				text
+			, CREATE_DATE		createDate
+			, UPDATE_DATE		updateDate
+		FROM 
+			ITEM_ASSIGN
+		WHERE
+			ITEM_ASSIGN_ID = #itemAssignId#
+	</select>
+	
+	<select id="getAll" resultClass="pushed_noti">
+		SELECT 
+			ID					id
+			, ITEM_ASSIGN_ID	itemAssignId
+			, DELIVERY_MAN_ID	deliveryManId
+			, TEXT				text
+			, CREATE_DATE		createDate
+			, UPDATE_DATE		updateDate
+		FROM 
+			ITEM_ASSIGN
+	</select>
+</sqlMap>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="delivery_item" type="com.rtdcs.dao.DeliveryItem" />
+	
+	<!-- Perform Insert Operation -->
+	<insert id="insertDeliveryItem" parameterClass="delivery_item">
+		INSERT INTO
+			CONNECT_DEVICE
+				( ID
+				, NAME
+				, DESCRIPTION
+				, CUSTOMER_NAME
+				, LOCATION
+				, TARGET_DATE
+				, STATUS
+				, CUSTOMER_SIGNATURE
+				, RECEIVED_LOCATION
+				, RECEIVED_TIME
+				, CREATE_DATE
+				, UPDATE_DATE )
+			VALUES
+				( #id#
+				, #name#
+				, #description#
+				, #customerName#
+				, #location#
+				, #targetDate#
+				, #status#
+				, #customerSignature#
+				, #receivedLocation#
+				, #receivedTime#
+				, NOW()
+				, NOW() )
+	</insert>
+	<update id="updateDeliveryItem" parameterClass="delivery_item">
+		UPDATE CONNECT_DEVICE SET
+				<isNotEmpty property="id" >
+				ID = #id# ,
+				</isNotEmpty>
+				<isNotEmpty property="name" >
+				NAME = #name# ,
+				</isNotEmpty>
+				<isNotEmpty property="description" >
+				DESCRIPTION = #description# ,
+				</isNotEmpty>
+				<isNotEmpty property="customerName" >
+				CUSTOMER_NAME = #customerName# ,
+				</isNotEmpty>
+				<isNotEmpty property="location" >
+				LOCATION = #location# ,
+				</isNotEmpty>
+				<isNotNull property="targetDate" >
+				TARGET_DATE = #targetDate# ,
+				</isNotNull>
+				<isNotEmpty property="status" >
+				STATUS = #status# ,
+				</isNotEmpty>
+				<isNotNull property="customerSignature" >
+				CUSTOMER_SIGNATURE = #customerSignature# ,
+				</isNotNull>
+				<isNotEmpty property="receivedLocation" >
+				RECEIVED_LOCATION = #receivedLocation# ,
+				</isNotEmpty>
+				<isNotNull property="receivedTime" >
+				RECEIVED_TIME = #receivedTime# ,
+				</isNotNull>
+				UPDATE_DATE = NOW()
+		WHERE
+				ID = #id#
+	</update>
+
+	<!-- Perform Read Operation -->
+	
+	<select id="getByID" parameterClass="int" resultClass="delivery_item">
+		SELECT 
+			ID						id
+			, NAME					name
+			, DESCRIPTION			description
+			, CUSTOMER_NAME			customerName
+			, LOCATION				location
+			, TARGET_DATE			targetDate
+			, STATUS				status
+			, CUSTOMER_SIGNATURE	customerSignature
+			, RECEIVED_LOCATION		receivedLocation
+			, RECEIVED_TIME			receivedTime
+			, CREATE_DATE			createDate
+			, UPDATE_DATE			updateDate
+		FROM 
+			CONNECT_DEVICE
+		WHERE
+			ID = #id#
+	</select>
+	
+	<select id="getByTargetDate" parameterClass="delivery_item" resultClass="delivery_item">
+		SELECT 
+			ID						id
+			, NAME					name
+			, DESCRIPTION			description
+			, CUSTOMER_NAME			customerName
+			, LOCATION				location
+			, TARGET_DATE			targetDate
+			, STATUS				status
+			, CUSTOMER_SIGNATURE	customerSignature
+			, RECEIVED_LOCATION		receivedLocation
+			, RECEIVED_TIME			receivedTime
+			, CREATE_DATE			createDate
+			, UPDATE_DATE			updateDate
+		FROM 
+			CONNECT_DEVICE
+		WHERE
+			TARGET_DATE = #targetDate#
+	</select>
+	
+	<select id="getByCustomerName" parameterClass="String" resultClass="delivery_item">
+		SELECT 
+			ID						id
+			, NAME					name
+			, DESCRIPTION			description
+			, CUSTOMER_NAME			customerName
+			, LOCATION				location
+			, TARGET_DATE			targetDate
+			, STATUS				status
+			, CUSTOMER_SIGNATURE	customerSignature
+			, RECEIVED_LOCATION		receivedLocation
+			, RECEIVED_TIME			receivedTime
+			, CREATE_DATE			createDate
+			, UPDATE_DATE			updateDate
+		FROM 
+			CONNECT_DEVICE
+		WHERE
+			CUSTOMER_NAME = #customerName#
+	</select>
+	
+	<select id="getAll" resultClass="delivery_item">
+		SELECT 
+			ID						id
+			, NAME					name
+			, DESCRIPTION			description
+			, CUSTOMER_NAME			customerName
+			, LOCATION				location
+			, TARGET_DATE			targetDate
+			, STATUS				status
+			, CUSTOMER_SIGNATURE	customerSignature
+			, RECEIVED_LOCATION		receivedLocation
+			, RECEIVED_TIME			receivedTime
+			, CREATE_DATE			createDate
+			, UPDATE_DATE			updateDate
+		FROM 
+			CONNECT_DEVICE
+		WHERE
+			STATUS != 1
+	</select>
+</sqlMap>

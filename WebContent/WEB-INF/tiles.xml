@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="baseLayout" template="/WEB-INF/pages/basic/baseLayout.jsp">
+      <put-attribute name="title"  value="Online Shopping"/>
+      <put-attribute name="header" value="/WEB-INF/pages/basic/header.jsp"/>
+      <put-attribute name="menu"   value="/WEB-INF/pages/basic/category_menu.jsp"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/basic/body.jsp"/>
+      <put-attribute name="footer"   value="/WEB-INF/pages/basic/footer.jsp"/>
+  </definition>
+  
+  <definition name="welcome" extends="baseLayout">
+      <put-attribute name="title"  value="Welcome"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/welcome.jsp"/>      
+  </definition>
+  
+  <definition name="about_us" extends="baseLayout">
+      <put-attribute name="title"  value="About Us"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/aboutus/aboutUs.jsp"/>      
+  </definition>
+  
+  <definition name="office" extends="baseLayout">
+      <put-attribute name="title"  value="Office"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/office.jsp"/>      
+  </definition>
+  
+  <definition name="admin" extends="baseLayout">
+      <put-attribute name="title"  value="Site Administrator Home Page"/>
+      <put-attribute name="header"   value="/WEB-INF/pages/admin/adminHeader.jsp"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/admin/adminHome.jsp"/>
+      <put-attribute name="menu"   value="/WEB-INF/pages/admin/adminMenu.jsp"/>      
+  </definition>
+  
+  <definition name="create_account" extends="admin">
+      <put-attribute name="title"  value="Account Registration"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/account/USR0101.jsp"/>            
+  </definition>
+  <definition name="create_account_result" extends="admin">
+      <put-attribute name="title"  value="Account Registration Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/account/USR0102.jsp"/>            
+  </definition>
+  <definition name="password_change" extends="admin">
+      <put-attribute name="title"  value="Password Change Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/account/PWD0301.jsp"/>            
+  </definition>
+  
+  <definition name="create_category" extends="admin">
+      <put-attribute name="title"  value="Category Registration"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/category/CTE0101.jsp"/>            
+  </definition>
+  <definition name="delete_category" extends="admin">
+      <put-attribute name="title"  value="Category Deletion"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/category/CTE0401.jsp"/>            
+  </definition>
+  <definition name="delete_category_result" extends="admin">
+      <put-attribute name="title"  value="Category Deletion Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/category/CTE0402.jsp"/>            
+  </definition>
+  <definition name="create_category_result" extends="admin">
+      <put-attribute name="title"  value="Category Registration Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/category/CTE0102.jsp"/>            
+  </definition>  
+  <definition name="list_category" extends="admin">
+      <put-attribute name="title"  value="Category List"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/category/CTE0201.jsp"/>            
+  </definition>
+  <definition name="create_item" extends="admin">
+      <put-attribute name="title"  value="Item Registration"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/items/ITE0101.jsp"/>            
+  </definition>
+  <definition name="delete_item" extends="admin">
+      <put-attribute name="title"  value="Item Deletion"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/items/ITE0401.jsp"/>            
+  </definition>
+  <definition name="delete_item_result" extends="admin">
+      <put-attribute name="title"  value="Category Deletion Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/items/ITE0402.jsp"/>            
+  </definition>
+  <definition name="create_item_result" extends="admin">
+      <put-attribute name="title"  value="Item Registration Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/items/ITE0102.jsp"/>            
+  </definition>  
+  <definition name="item_search" extends="admin">
+      <put-attribute name="title"  value="Item Search"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/items/ITE0201.jsp"/>            
+  </definition>
+  <definition name="item_search_result" extends="admin">
+      <put-attribute name="title"  value="Item Search Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/items/ITE0202.jsp"/>            
+  </definition>
+  
+  <definition name="create_order" extends="admin">
+      <put-attribute name="title"  value="Order Registration"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/order/ORE0101.jsp"/>            
+  </definition>
+  <definition name="create_order_result" extends="admin">
+      <put-attribute name="title"  value="Order Registration Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/order/ORE0102.jsp"/>            
+  </definition>
+  <definition name="order_search" extends="admin">
+      <put-attribute name="title"  value="Order Search"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/order/ORE0201.jsp"/>            
+  </definition>
+  <definition name="order_search_result" extends="admin">
+      <put-attribute name="title"  value="Order Search Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/order/ORE0202.jsp"/>            
+  </definition>
+  <definition name="delete_order" extends="admin">
+      <put-attribute name="title"  value="Order Deletion"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/order/ORE0401.jsp"/>            
+  </definition>
+  <definition name="delete_order_result" extends="admin">
+      <put-attribute name="title"  value="Order Deletion Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/order/ORE0402.jsp"/>            
+  </definition> 
+  
+  <!-- Customer Side -->
+  
+  <definition name="cus_ite_search" extends="baseLayout">
+      <put-attribute name="title"  value="Item Search Form"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/items/ITE0201.jsp"/>            
+  </definition>
+  <definition name="cus_ite_search_result" extends="baseLayout">
+      <put-attribute name="title"  value="Item Search Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/items/ITE0203.jsp"/>            
+  </definition>
+  <definition name="category_menu_page" extends="baseLayout">
+      <put-attribute name="menu"   value="/WEB-INF/pages/basic/category_menu.jsp"/>            
+  </definition>
+  <definition name="cat_ite_search_result" extends="category_menu_page">
+      <put-attribute name="title"  value="Item Search Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/items/ITE0203.jsp"/>                  
+  </definition>
+  <definition name="cus_create_order" extends="category_menu_page">
+      <put-attribute name="title"  value="order Search Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/order/ORE0101.jsp"/>            
+  </definition>
+  <definition name="cus_create_order_result" extends="category_menu_page">
+      <put-attribute name="title"  value="Item Search Result"/>
+      <put-attribute name="body"   value="/WEB-INF/pages/order/ORE0102.jsp"/>                  
+  </definition>
+  
+</tiles-definitions>

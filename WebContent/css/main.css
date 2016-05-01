@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+.errorMessage {
+color: red;
+font-size: 1em;
+}
+.infoMessage {
+	color: blue;
+	font-size: 1em;
+}
+TR TH, TR TD {
+    white-space: nowrap; 	
+}
+.d_table{
+	width:150px;
+	height:10px;
+	border:1px black solid;
+	cellspacing:1px;
+	cellpadding:3px;
+	text-align: left;
+}
+.table_header{
+	border:1px black solid;
+	height:20px;
+	cellspacing:1px;
+	cellpadding:3px;
+	table-layout:auto;
+	background-color:#bde9ba;
+}
+
+.h_table{
+	border:1px black solid;
+	height:20px;
+	cellspacing:1px;
+	cellpadding:3px;
+	table-layout:auto;	
+}
+td.noImg{
+	border:1px silver solid;
+	width:100px; 
+	height:100px;
+	color:grey;
+	text-align: center;
+}
+.h3{
+	font-size:16px;
+	text-align:center;
+	margin : 0px;
+	font-family: 'Comic Sans MS';
+	font-weight:bold;
+	color: green;	
+}

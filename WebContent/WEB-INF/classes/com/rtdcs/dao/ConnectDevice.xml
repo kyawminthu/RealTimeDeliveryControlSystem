@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias alias="connect_device" type="com.rtdcs.dao.ConnectDevice" />
+	
+	<!-- Perform Insert Operation -->
+	<insert id="insertDevice" parameterClass="connect_device">
+		INSERT INTO
+			CONNECT_DEVICE
+				( ID
+				, TOKEN
+				, DELIVERY_MAN_ID
+				, CREATE_DATE
+				, UPDATE_DATE )
+			VALUES
+				( #id#
+				, #token#
+				, #deliveryManId#
+				, NOW()
+				, NOW() )
+	</insert>
+	<update id="updateDevice" parameterClass="connect_device">
+		UPDATE CONNECT_DEVICE SET
+				<isNotEmpty property="id" >
+				ID = #id# ,
+				</isNotEmpty>
+				<isNotEmpty property="token" >
+				TOKEN = #token# ,
+				</isNotEmpty>
+				<isNotEmpty property="deliveryManId" >
+				DELIVERY_MAN_ID = #deliveryManId# ,
+				</isNotEmpty>
+				UPDATE_DATE = NOW()
+		WHERE
+				ID = #id#
+	</update>
+	<delete id="deleteDeviceByDeliveryMan" parameterClass="String">
+		DELETE FROM 
+			CONNECT_DEVICE
+		WHERE
+			DELIVERY_MAN_ID = #deliveryManId#
+	</delete>
+
+	<!-- Perform Read Operation -->
+	<select id="getByID" parameterClass="String" resultClass="connect_device">
+		SELECT 
+			ID					id
+			, TOKEN				token
+			, DELIVERY_MAN_ID	deliveryManId
+			, CREATE_DATE		createDate
+			, UPDATE_DATE		updateDate
+		FROM 
+			CONNECT_DEVICE
+		WHERE
+			ID = #id#
+	</select>
+	
+	<select id="getByDeliveryMan" parameterClass="String" resultClass="connect_device">
+		SELECT 
+			ID				id
+			, TOKEN			token
+			, DELIVERY_MAN_ID	deliveryManId
+			, CREATE_DATE	createDate
+			, UPDATE_DATE	updateDate
+		FROM 
+			CONNECT_DEVICE
+		WHERE
+			DELIVERY_MAN_ID = #deliveryManId#
+	</select>
+	
+	<select id="getByToken" parameterClass="String" resultClass="connect_device">
+		SELECT 
+			ID				id
+			, TOKEN			token
+			, DELIVERY_MAN_ID	deliveryManId
+			, CREATE_DATE	createDate
+			, UPDATE_DATE	updateDate
+		FROM 
+			CONNECT_DEVICE
+		WHERE
+			TOKEN = #token#
+	</select>
+	
+	<select id="getAll" resultClass="connect_device">
+		SELECT 
+			ID				id
+			, TOKEN			token
+			, DELIVERY_MAN_ID	deliveryManId
+			, CREATE_DATE	createDate
+			, UPDATE_DATE	updateDate
+		FROM 
+			CONNECT_DEVICE
+	</select>
+</sqlMap>
